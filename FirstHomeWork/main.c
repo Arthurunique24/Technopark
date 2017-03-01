@@ -2,12 +2,12 @@
 #include <string.h>
 
 void countLines(FILE *file){
-    char s[256];
     unsigned int countLines = 0;
-    while (fgets(s, 100, file)) {
-        //printf("%s", s);
-        countLines++;
+    while (!feof(file)){
+        if (fgetc(file) == '\n')
+            countLines++;
     }
+    countLines++;
     printf("\nCount of lines: %d\n", countLines);
     fseek(file, 0, SEEK_SET);
 }
@@ -15,7 +15,7 @@ void countLines(FILE *file){
 void countWords(FILE *file){
     char str[256];
     unsigned int countWords = 0;
-    while (fgets(str, 100, file)) {
+    while (fgets(str, 256, file)) {
         for(int i = 0; i<strlen(str) - 1; i++){
             if ((str[i]==' ') && (str[i+1]!=' ')){
                 countWords=countWords+1;
@@ -32,7 +32,7 @@ void countWords(FILE *file){
 void countSymbols(FILE *file){
     char str[256];
     unsigned int countSize = 0;
-    while(fgets(str, 100, file)){
+    while(fgets(str, 256, file)){
         for(int i = 0; i < strlen(str); i++){
             if(str[i] != ' ' && str[i] != '\n'){
                 countSize++;
@@ -44,7 +44,7 @@ void countSymbols(FILE *file){
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 2) {
+    if (argc < 2){
         return 0;
     }
     FILE* file = fopen(argv[1], "r");
@@ -56,3 +56,13 @@ int main(int argc, char *argv[]) {
     fclose(file);
     return 0;
 }
+
+/*void countLines2(FILE *file){
+ char s[256];
+ unsigned int countLines = 0;
+ while (fgets(s, 256, file)) {
+    countLines++;
+ }
+ printf("\nCount of lines: %d\n", countLines);
+ fseek(file, 0, SEEK_SET);
+ } */
