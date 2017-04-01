@@ -3,13 +3,8 @@
 #include "Multiset.h"
 #include <iostream>
 
-int main()
-{
+int main(){
 	tda::multiset<int> a;
-	/*for (int i = 0; i < 10; ++i)
-	{
-		a.insert(rand() % 1000);
-	}*/
 
 	a.insert(2);
 	a.insert(1);
@@ -30,12 +25,13 @@ int main()
 	a.print();
 	b.print();
 	
-	if (a == b)
+    if (a == b){
 		std::cout << "lol";
-	else
+    }
+    else{
 		std::cout << "nelol";
-
-
+    }
+    
     return 0;
 }
 

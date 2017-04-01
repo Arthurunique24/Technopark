@@ -1,24 +1,18 @@
-#pragma once
 #include <iostream>
 
-namespace tda
-{
+namespace tda{
+    
 	template<class Key> //this class includes keys, which multiset includes
-	class key_type
-	{
+	class key_type{
 	public:
-		key_type() : _val(0), _left(nullptr), _right(nullptr), _parent(nullptr), _nullflag(false)
-		{}
+		key_type() : _val(0), _left(nullptr), _right(nullptr), _parent(nullptr), _nullflag(false){}
 
 		key_type(Key val, key_type * left = nullptr, key_type * right = nullptr, key_type * parent = nullptr, bool nullflag = false)
-			: _val(val), _left(left), _right(right), _parent(parent), _nullflag(nullflag)
-		{}
+			: _val(val), _left(left), _right(right), _parent(parent), _nullflag(nullflag){}
 
-		key_type(const key_type & obj) : _val(obj._val), _left(nullptr), _right(nullptr), _parent(nullptr), _nullflag(obj._nullflag)
-		{}
+		key_type(const key_type & obj) : _val(obj._val), _left(nullptr), _right(nullptr), _parent(nullptr), _nullflag(obj._nullflag){}
 
-		key_type & operator=(const key_type & obj)
-		{
+		key_type & operator=(const key_type & obj){
 			if (this == &obj)
 				return (*this);
 			_val = obj._val;
@@ -26,13 +20,11 @@ namespace tda
 			return (*this);
 		}
 
-		bool operator!=(const key_type & obj)
-		{
+		bool operator!=(const key_type & obj){
 			return (_val != obj._val);
 		}
 
-		friend std::ostream& operator<<(std::ostream& f, const key_type<Key>& a)
-		{
+		friend std::ostream& operator<<(std::ostream& f, const key_type<Key>& a){
 			f << a._val;
 			return f;
 		}
@@ -47,25 +39,20 @@ namespace tda
 	};
 
 	template<class Key, class Compare = std::less<Key>>
-	class multiset
-	{
+	class multiset{
 	public:
-		
 		//default constructor with comparator
-		multiset(const Compare& c = Compare()) : _root(nullptr), _size(0), comp(c)
-		{}
+		multiset(const Compare& c = Compare()) : _root(nullptr), _size(0), comp(c) {}
 
 		//constructor with area of iterators
 		template<class Iterator>
-		multiset(Iterator begin, Iterator end, const Compare& c = Compare()) : comp(c), _root(nullptr)
-		{
+		multiset(Iterator begin, Iterator end, const Compare& c = Compare()) : comp(c), _root(nullptr){
 			for (Iterator it = begin; it != end; it++)
 				this->insert(it._pointer->_val);
 		}
 
 		//copy ctor
-		multiset(multiset& obj) : _size(0), _maxSize(obj.max_size()), comp(obj.comp), _root(nullptr)
-		{
+		multiset(multiset& obj) : _size(0), _maxSize(obj.max_size()), comp(obj.comp), _root(nullptr){
 			for (multiset::iterator it = obj.begin(); it != obj.end(); ++it)
 			{
 				insert(it._pointer->_val);
@@ -74,67 +61,54 @@ namespace tda
 		}
 
 		//dtor
-		~multiset()
-		{
+		~multiset(){
 			this->clear();
 		}
 
-		class iterator
-		{
+		class iterator{
 		public:
 			friend class multiset<Key>;
-			iterator(const Compare& c = Compare()) : _pointer(nullptr), comp(c)
-			{}
+			iterator(const Compare& c = Compare()) : _pointer(nullptr), comp(c){}
 
-			iterator(key_type<Key> * ptr, const Compare& c = Compare()) : _pointer(ptr), comp(c)
-			{}
+			iterator(key_type<Key> * ptr, const Compare& c = Compare()) : _pointer(ptr), comp(c){}
 
-			iterator(const iterator & it) :_pointer(it._pointer)
-			{}
+			iterator(const iterator & it) :_pointer(it._pointer){}
 
-			key_type<Key> & operator*()
-			{
+			key_type<Key> & operator*(){
 				if (_pointer == nullptr || _pointer->_nullflag)
 						throw std::invalid_argument("Wrong iterator");
 				return (*_pointer);
 			}
 
-			key_type<Key> * operator->()
-			{
+			key_type<Key> * operator->(){
 				if (_pointer == nullptr)
 					throw std::invalid_argument("Wrong iterator");
 				return (_pointer);
 			}
 
-			bool operator==(const iterator & it)
-			{
+			bool operator==(const iterator & it){
 				return (it._pointer == _pointer);
 			}
 
-			bool operator!=(const iterator & it)
-			{
+			bool operator!=(const iterator & it){
 				return (it._pointer != _pointer);
 			}
 
-			iterator operator=(const iterator & it)
-			{
+			iterator operator=(const iterator & it){
 				if (_pointer == it._pointer)
 					return *this;
 				_pointer = it._pointer;
 				return (*this);
 			}
 
-			iterator operator++()
-			{
-
+			iterator operator++(){
 				if (!_pointer)
 					return *this;
 				if (_pointer->_nullflag == true)
 					return *this;
 
 
-				if (_pointer->_parent == nullptr)
-				{
+				if (_pointer->_parent == nullptr){
 
 					_pointer = _pointer->_right;
 					while (_pointer->_left != nullptr)
@@ -142,10 +116,8 @@ namespace tda
 					return *this;
 				}
 
-				if (comp(_pointer->_val, _pointer->_parent->_val))
-				{
-					if (_pointer->_right != nullptr)
-					{
+				if (comp(_pointer->_val, _pointer->_parent->_val)){
+					if (_pointer->_right != nullptr){
 						_pointer = _pointer->_right;
 						while (_pointer->_left != nullptr)
 							_pointer = _pointer->_left;
@@ -156,18 +128,13 @@ namespace tda
 					return *this;
 				}
 
-				if (!comp(_pointer->_val, _pointer->_parent->_val))
-				{
-					if (_pointer->_right == nullptr)
-					{
+				if (!comp(_pointer->_val, _pointer->_parent->_val)){
+					if (_pointer->_right == nullptr){
 
 						key_type<Key> * pi = _pointer;
-						while (!comp(_pointer->_val, pi->_parent->_val)) //pointer->parent
-						{
-
+						while (!comp(_pointer->_val, pi->_parent->_val)){
 							pi = pi->_parent;
-							if (pi->_parent == nullptr)
-							{
+							if (pi->_parent == nullptr){
 								_pointer = pi->_right;
 								break;
 								return *this;
@@ -179,38 +146,30 @@ namespace tda
 					}
 
 					_pointer = _pointer->_right;
-					while (_pointer->_left != nullptr)
+                    while (_pointer->_left != nullptr){
 						_pointer = _pointer->_left;
+                    }
 					return *this;
-
 				}
-	
-	
 			}
 		
-			iterator operator--()
-			{
-				if (_pointer == nullptr)
-				{
+			iterator operator--(){
+				if (_pointer == nullptr){
 					return *this;
 				}
-				if (_pointer->_nullflag)
-				{
+				if (_pointer->_nullflag){
 					_pointer = _pointer->_parent;
 					return *this;
 				}
-				if (_pointer->_parent == nullptr)
-				{
+				if (_pointer->_parent == nullptr){
 					_pointer = _pointer->_left;
 					while (_pointer->_right != nullptr)
 						_pointer = _pointer->_right;
 					return *this;
 				}
 
-				if (_pointer->_val >= _pointer->_parent->_val) // смена знака? =
-				{
-					if (_pointer->_left != nullptr)
-					{
+				if (_pointer->_val >= _pointer->_parent->_val){
+					if (_pointer->_left != nullptr){
 						_pointer = _pointer->_left;
 						while (_pointer->_right != nullptr)
 							_pointer = _pointer->_right;
@@ -221,18 +180,13 @@ namespace tda
 					return *this;
 				}
 
-				if (_pointer->_val < _pointer->_parent->_val)
-				{
-					if (_pointer->_left == nullptr)
-					{
+				if (_pointer->_val < _pointer->_parent->_val){
+					if (_pointer->_left == nullptr){
 
 						key_type<Key> * pi = _pointer;
-						while (_pointer->_val < pi->_parent->_val)
-						{
-
+						while (_pointer->_val < pi->_parent->_val){
 							pi = pi->_parent;
-							if (pi->_parent == nullptr)
-							{
+							if (pi->_parent == nullptr){
 								_pointer = pi->_left;
 								break;
 							}
@@ -243,23 +197,21 @@ namespace tda
 					}
 
 					_pointer = _pointer->_left;
-					while (_pointer->_right != nullptr)
+                    while (_pointer->_right != nullptr){
 						_pointer = _pointer->_right;
+                    }
 					return *this;
-
 				}
 			}
 			
-			iterator operator++(int)
-			{
+			iterator operator++(int){
 				iterator it(*this);
 				++(it);
 				_pointer = it._pointer;
 				return (*this);
 			}
 
-			iterator operator--(int)
-			{
+			iterator operator--(int){
 				iterator it(*this);
 				--(it);
 				_pointer = it._pointer;
@@ -273,43 +225,38 @@ namespace tda
 			Compare comp;
 		};
 		
-		struct key_compare
-		{
-			bool operator()(const Key& a, const Key& b) const
-			{
+		struct key_compare{
+			bool operator()(const Key& a, const Key& b) const{
 				std::less<T> less;
 				return less(a, b);
 			}
 		};
 
-		iterator begin()
-		{
+		iterator begin(){
 			key_type<Key> * pi = _root;
-			while (pi->_left != nullptr)
+            while (pi->_left != nullptr){
 				pi = pi->_left;
+            }
 			return iterator(pi);
 		}
 
-		iterator end()
-		{
+		iterator end(){
 			key_type<Key> * pi = _root;
-			while (pi->_right != nullptr)
+            while (pi->_right != nullptr){
 				pi = pi->_right;
-			if (!(pi->_nullflag))
-			{
+            }
+			if (!(pi->_nullflag)){
 				pi->_right = new key_type<Key>(NULL, nullptr, nullptr, pi, true);
 				return iterator(pi->_right);
 			}
-			else
+            else{
 				return iterator(pi);
-			
+            }
 		}
 		
-		iterator lower_bound(const Key& key)
-		{
+		iterator lower_bound(const Key& key){
 			iterator it = find(key);
-			if (it == end())
-			{
+			if (it == end()){
 				insert(key);
 				it = find(key);
 				it++;
@@ -319,28 +266,22 @@ namespace tda
 			return it;
 		}
 
-		const iterator lower_bound(const Key& key) const
-		{
+		const iterator lower_bound(const Key& key) const{
 			iterator it = find(key);
-			if (it == end())
-			{
+			if (it == end()){
 				insert(key);
 				it = find(key);
 				it++;
 				erase(key);
 				return it;
 			}
-
 			return it;
-
 		}
 
-		iterator upper_bound(const Key& key)
-		{
+		iterator upper_bound(const Key& key){
 		
 			iterator it = find(key);
-			if (it == end())
-			{
+			if (it == end()){
 				insert(key);
 				it = find(key);
 				while (it._pointer->_val == key)
@@ -349,68 +290,57 @@ namespace tda
 				return it;
 			}
 			
-			if (it == --end())
-			{
+			if (it == --end()){
 				return end();
 			}
-			while (it._pointer->_val == key)
+            while (it._pointer->_val == key){
 				it++;
+            }
 			return it;
-
 		}
 
-		const iterator upper_bound(const Key& key) const
-		{
+		const iterator upper_bound(const Key& key) const{
 			iterator it = find(key);
-			if (it == end())
-			{
+			if (it == end()){
 				insert(key);
 				it = find(key);
-				while (it._pointer->_val == key)
+                while (it._pointer->_val == key){
 					it++;
+                }
 				erase(key);
 				return it;
 			}
 
-			if (it == --end())
-			{
+			if (it == --end()){
 				return end();
 			}
-			while (it._pointer->_val == key)
+            while (it._pointer->_val == key){
 				it++;
+            }
 			return it;
-
 		}
 
 		//insert with area of iterators
 		template<class Iterator>
-		void insert(Iterator begin, Iterator end)
-		{
+		void insert(Iterator begin, Iterator end){
 			for (Iterator it = begin; it != end; it++)
 				insert(it._pointer->_val);
 		}
 
-		void insert(const Key val)
-		{
-
-			if (_size == _maxSize)
+		void insert(const Key val){
+            if (_size == _maxSize){
 				return;
-
+            }
 			++_size;
 
-			if (_root == nullptr)
-			{
+			if (_root == nullptr){
 				_root = new key_type<Key>(val);
 				return;
 			}
 			key_type<Key> * pi = _root;
-			while (1)
-			{
-
-				if (!comp(val, pi->_val))
-				{
-					if (pi->_right == nullptr)
-					{
+			while (1){
+				if (!comp(val, pi->_val)){
+					if (pi->_right == nullptr){
 						key_type<Key> * k = new key_type<Key>(val, nullptr, nullptr, pi);
 						pi->_right = k;
 						return;
@@ -418,10 +348,8 @@ namespace tda
 					pi = pi->_right;
 				}
 
-				if ( comp(val, pi->_val) )
-				{
-					if (pi->_left == nullptr)
-					{
+				if ( comp(val, pi->_val) ){
+					if (pi->_left == nullptr){
 						key_type<Key> * k = new key_type<Key>(val, nullptr, nullptr, pi);
 						pi->_left = k;
 						return;
@@ -432,24 +360,17 @@ namespace tda
 
 		}
 
-		key_type<Key> * erase(const Key& val)
-		{
+		key_type<Key> * erase(const Key& val){
 			--_size;
-			if (_size == 0)
-			{
+			if (_size == 0){
 				_root = nullptr;
 				return _root;
 			}
 			key_type<Key> * pi = _root;
-			while (1)
-			{
-				if (val == pi->_val)
-				{
-
-					if (pi == _root)
-					{
-						if (pi->_left != nullptr)
-						{
+			while (1){
+				if (val == pi->_val){
+					if (pi == _root){
+						if (pi->_left != nullptr){
 							_root = pi->_left;
 							while (pi->_left->_right != nullptr)
 								pi->_left = pi->_left->_right;
@@ -458,8 +379,7 @@ namespace tda
 							_root->_parent = nullptr;
 							return pi;
 						}
-						else
-						{
+						else{
 							_root = pi->_right;
 							while (pi->_right->_left != nullptr)
 								pi->_right = pi->_right->_left;
@@ -470,24 +390,20 @@ namespace tda
 					}
 
 
-				if (!comp(pi->_val, pi->_parent->_val))
-					{
-						if (pi->_left == nullptr && pi->_right == nullptr)
-						{
+				if (!comp(pi->_val, pi->_parent->_val)){
+						if (pi->_left == nullptr && pi->_right == nullptr){
 							pi = pi->_parent;
 							pi->_parent->_right = nullptr;
 							return pi;
 						}
 
-						if (pi->_left == nullptr && pi->_right != nullptr)
-						{
+						if (pi->_left == nullptr && pi->_right != nullptr){
 							pi->_parent->_right = pi->_right;
 							pi->_right->_parent = pi->_parent;
 							return pi;
 						}
 
-						if (pi->_left != nullptr && pi->_right != nullptr)
-						{
+						if (pi->_left != nullptr && pi->_right != nullptr){
 							pi->_parent->_right = pi->_right;
 							pi->_right->_parent = pi->_parent;
 							while (pi->_right->_left != nullptr)
@@ -498,23 +414,18 @@ namespace tda
 						}
 					}
 
-					if (comp(pi->_val, pi->_parent->_val))
-					{
-
-						if (pi->_left == nullptr && pi->_right == nullptr)
-						{
+					if (comp(pi->_val, pi->_parent->_val)){
+						if (pi->_left == nullptr && pi->_right == nullptr){
 							pi->_parent->_left = nullptr;
 							return pi;
 						}
 
-						if (pi->_left != nullptr && pi->_right == nullptr)
-						{
+						if (pi->_left != nullptr && pi->_right == nullptr){
 							pi->_parent->_left = pi->_left;
 							pi->_left->_parent = pi->_parent;
 							return pi;
 						}
-						if (pi->_left != nullptr && pi->_right != nullptr)
-						{
+						if (pi->_left != nullptr && pi->_right != nullptr){
 							pi->_parent->_left = pi->_left;
 							pi->_left->_parent = pi->_parent;
 							while (pi->_left->_right != nullptr)
@@ -524,119 +435,95 @@ namespace tda
 							return pi;
 						}
 					}
-
-
 				}
-				if (comp(val, pi->_val))
-				{
+				if (comp(val, pi->_val)){
 					if (pi->_left == nullptr)
 						return nullptr;
 					pi = pi->_left;
 				}
-				else
-				{
-					if (!comp(val, pi->_val))
-					{
-						if (pi->_right == nullptr && pi->_nullflag)
+				else{
+					if (!comp(val, pi->_val)){
+                        if (pi->_right == nullptr && pi->_nullflag){
 							return nullptr;
+                        }
 						pi = pi->_right;
 					}
 				}
 			}
 		}
 
-		void print()
-		{
+		void print(){
 			inOrderPrint(_root);
 			std::cout << std::endl;
 		}
 
-		size_t size() const
-		{
+		size_t size() const{
 			return _size;
 		}
 
-		size_t count(const Key & val)
-		{
+		size_t count(const Key & val){
 			size_t _count = 0;
 			int flag = 0;
 			key_type<Key> * pi = _root;
-			while (1)
-			{
-				if (val == pi->_val)
-				{
+			while (1){
+				if (val == pi->_val){
 					_count++;
 					flag = 1;
 				}
 
-				if (val != pi->_val && flag == 1)
-				{
+				if (val != pi->_val && flag == 1){
 					return _count;
 				}
 
-				if (!comp(val, pi->_val))
-				{
-					if (pi->_right == nullptr)
-					{
-						if (flag == 1)
+				if (!comp(val, pi->_val)){
+					if (pi->_right == nullptr){
+                        if (flag == 1){
 							return _count;
+                        }
 						return 0;
 					}
 					pi = pi->_right;
-
 				}
 
-				if (comp(val, pi->_val))
-				{
-					if (pi->_left == nullptr)
-					{
-						if (flag == 1)
+				if (comp(val, pi->_val)){
+					if (pi->_left == nullptr){
+                        if (flag == 1){
 							return _count;
+                        }
 						return 0;
 					}
 					pi = pi->_left;
-
 				}
-
 			}
 			return _count;
 		}
 
-		size_t max_size() const
-		{
+		size_t max_size() const{
 			return _maxSize;
 		}
 
-		void clear()
-		{
+		void clear(){
 			_size = 0;
 			postOrderDelete(_root);
 			_root = nullptr;
 		}
 
-		iterator find(const Key& val)
-		{
+		iterator find(const Key& val){
 			key_type<Key> * pi = _root;
-			while (1)
-			{
-				if (val == pi->_val)
-				{
+			while (1){
+				if (val == pi->_val){
 					return iterator(pi);
 				}
 
-				if (!comp(val, pi->_val))
-				{
-					if (pi->_right == nullptr)
-					{
+				if (!comp(val, pi->_val)){
+					if (pi->_right == nullptr){
 						return end();
 					}
 					pi = pi->_right;
 				}
 
-				if (comp(val, pi->_val))
-				{
-					if (pi->_left == nullptr)
-					{
+				if (comp(val, pi->_val)){
+					if (pi->_left == nullptr){
 						return end();
 					}
 					pi = pi->_left;
@@ -644,32 +531,33 @@ namespace tda
 			}
 		}
 
-		bool empty() const
-		{
+		bool empty() const{
 			return (_size == 0);
 		}
 
-		multiset & operator=(const multiset & obj)
-		{
-			if (this == &obj)
+		multiset & operator=(const multiset & obj){
+            if (this == &obj){
 				return *this;
-			if (!empty)
+            }
+            if (!empty){
 				clear();
-			for (multiset::iterator it = obj.begin(); it != obj.end(); ++it)
+            }
+            for (multiset::iterator it = obj.begin(); it != obj.end(); ++it){
 				insert(it._pointer->_val);
+            }
 			return *this;
 		}
 
-		void swap(multiset & obj)
-		{
+		void swap(multiset & obj){
 			multiset buf(*this);
 			clear();
-			for (multiset::iterator it = obj.begin(); it != obj.end(); ++it)
+            for (multiset::iterator it = obj.begin(); it != obj.end(); ++it){
 				insert(it._pointer->_val);
+            }
 			obj.clear();
-			for (multiset::iterator it = buf.begin(); it != buf.end(); ++it)
+            for (multiset::iterator it = buf.begin(); it != buf.end(); ++it){
 				obj.insert(it._pointer->_val);
-
+            }
 		}
 
 	private:
@@ -679,12 +567,9 @@ namespace tda
 		Compare comp;
 
 		//this func goes around all tree to help me print multiset (in order)
-		void inOrderPrint(key_type<Key> * root)
-		{
-			if (root)
-			{
-				if (!(root->_nullflag))
-				{
+		void inOrderPrint(key_type<Key> * root){
+			if (root){
+				if (!(root->_nullflag)){
 					inOrderPrint(root->_left);
 					std::cout << root->_val << " ";
 					inOrderPrint(root->_right);
@@ -693,36 +578,32 @@ namespace tda
 		}
 
 		//this func goes around all tree to help me delete multiset (post order)
-		void postOrderDelete(key_type<Key> * root)
-		{
-			if (root)
-			{
+		void postOrderDelete(key_type<Key> * root){
+			if (root){
 				postOrderDelete(root->_left);
 				postOrderDelete(root->_right);
 				delete root;
 			}
 		}
-
 	};
 
 	template<class Key>
-	bool operator==(multiset<Key>& lhs, multiset<Key>& rhs)
-	{
-		if (lhs.size() != rhs.size())
+	bool operator==(multiset<Key>& lhs, multiset<Key>& rhs){
+        if (lhs.size() != rhs.size()){
 			return false;
+        }
 		multiset<Key>::iterator it1 = rhs.begin();
-		for (multiset<Key>::iterator it = lhs.begin(); it != lhs.end(); ++it)
-		{
-			if (*it != *it1)
+		for (multiset<Key>::iterator it = lhs.begin(); it != lhs.end(); ++it){
+            if (*it != *it1){
 				return false;
+            }
 			++it1;
 		}
 		return true;
 	}
 
 	template<class Key>
-	bool operator!=(multiset<Key>& lhs, multiset<Key>& rhs)
-	{
+	bool operator!=(multiset<Key>& lhs, multiset<Key>& rhs){
 		return (!(lhs == rhs));
 	}
 }
