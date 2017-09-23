@@ -1,0 +1,117 @@
+/*Navbar colors of tabs in active*/
+.navbar-inverse .navbar-nav > .active > a {
+    background: #ff7878;
+}
+
+/*navbar brand*/
+.navbar-inverse .navbar-brand {
+    color: #ff7878;
+    /*font-weight: bolder;*/
+    font-size: 22px;
+    /*Space between symbols*/
+    letter-spacing: 1px;
+}
+
+.header {
+    float: left;
+}
+
+.logo-img{
+    width: 40px;
+    height: 40px;
+}
+
+.search {
+    /*font-weight: bolder;*/
+    font-size: 18px;
+    margin-top: 8px;
+    margin-left: 25px;
+    float: left;
+}
+
+.search button {
+    background: #ff7878;
+    /*color: #ff7878;*/
+}
+
+.content, .footer{
+    min-width: 990px;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.left{
+    width: 65%;
+    margin-left: 20px;
+    margin-top: 60px;
+    float: left;
+}
+
+.left h3 {
+    height: 26px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.right{
+    width: 30%;
+    margin-left: auto;
+    float: right;
+}
+
+.userInfo {
+    margin-top: -50px;
+    margin-left: 20px;
+    float: right;
+}
+
+.userAvatar{
+    width: 50px;
+    height: 50px;
+    margin-top: 1px;
+}
+
+.userInfo {
+    margin-top: 2px;
+}
+
+.userName {
+    color: #f8f8f8;
+    font-weight: bold;
+}
+
+.userOptions {
+    float: right;
+    color: #f8f8f8;
+}
+
+.userOptions a {
+    color: #c6c6c6;
+    font-weight: bold;
+}
+
+.best-members{
+    margin-top: 30px;
+}
+
+.tags {
+    margin-top: 30px;
+}
+
+.bot{
+    border-bottom: 1px solid #e5e5e5
+}
+
+.questions {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #000;
+    min-height: 125px;
+}
+
+.userAvatarInQuestion {
+    height: 70px;
+    width: 70px;
+    margin: 10px 0px 0px 10px;
+}

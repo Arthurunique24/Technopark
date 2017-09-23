@@ -1,2 +1,3 @@
 # Technopark
-C/C++
+First semester
+Sarkisyan Arthur (АПО-12)
