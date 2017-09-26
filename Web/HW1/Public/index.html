@@ -11,30 +11,32 @@
     <link rel="stylesheet" href="../Static/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../Static/bootstrap/css/bootstrap-theme.css">
 
+
     <!--CSS-->
     <link rel="stylesheet" href="../Static/css/style.css">
     <link rel="stylesheet" href="../Static/fontAwesom/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-expand-md">
         <div class="container" style="height: 52px">
-            <div class="header">
-                <!--<img src="../Source/img/logo.PNG" class="img-circle d-inline-block logo-img">-->
-                <a class="navbar-brand" href="#">AskMeArthur <i class="fa fa-search" aria-hidden="true"></i></a>
-            </div>
-            <div class="search">
-                <form class="form-search">
-                    <input type="text" class="input-medium search-query">
-                    <button type="submit" class="btn">Search</button>
-                </form>
-            </div>
-            <div class="nav navbar-nav navbar-right">
-                <img src="../Source/img/user.svg" class="rounded-circle userAvatar">
-                <div class="userInfo">
-                    <div class="userName">Dr.Pepper</div>
-                    <div class="userOptions">
-                        <a href="">Options</a>
-                        <a href="">Sign Out</a>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <div class="header">
+                    <a class="navbar-brand" href="#">AskMeArthur <i class="fa fa-search" aria-hidden="true"></i></a>
+                </div>
+                <div class="search">
+                    <form class="form-search">
+                        <input type="text" class="input-medium search-query" placeholder="Serch">
+                        <button type="submit" class="btn">Search</button>
+                    </form>
+                </div>
+                <div class="nav navbar-nav navbar-right">
+                    <img src="../Source/img/user.svg" class="rounded-circle userAvatar">
+                    <div class="userInfo">
+                        <div class="userName">Dr.Pepper</div>
+                        <div class="userOptions">
+                            <a href="">Options</a>
+                            <a href="">Sign Out</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,12 +45,85 @@
     <div class="content">
         <div class="left">
             <h3>New Questions</h3>
-            <a>How questions</a>
+            <a href="">How questions</a>
             <div class="questions">
                 <div class="userAvatarInQuestion">
                     <img src="../Source/img/user.svg" class="rounded-circle question-avatar-img">
                 </div>
+                <div class="questionLike">
+                    31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="question.html">Question Title</a>
+                </div>
+                <div class="questionPreview">
+                    <p>Hey, this is question preview! I know, that's cool!</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="">Answers(3)</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <a href="" style="color: red">Python</a>
+                    <a href="" style="color: deepskyblue">C++</a>
+                </div>
             </div>
+            <div class="questions">
+                <div class="userAvatarInQuestion">
+                    <img src="../Source/img/user.svg" class="rounded-circle question-avatar-img">
+                </div>
+                <div class="questionLike">
+                    31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="">Question Title</a>
+                </div>
+                <div class="questionPreview">
+                    <p>Hey, this is question preview! I know, that's cool!</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="">Answers(3)</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <a href="" style="color: red">Python</a>
+                    <a href="" style="color: deepskyblue">C++</a>
+                </div>
+            </div>
+            <div class="questions">
+                <div class="userAvatarInQuestion">
+                    <img src="../Source/img/user.svg" class="rounded-circle question-avatar-img">
+                </div>
+                <div class="questionLike">
+                    31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="">Question Title</a>
+                </div>
+                <div class="questionPreview">
+                    <p>Hey, this is question preview! I know, that's cool!</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="">Answers(3)</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <a href="" style="color: red">Python</a>
+                    <a href="" style="color: deepskyblue">C++</a>
+                </div>
+            </div>
+
+
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
         </div>
         <div class="right">
             <div class="tags">
@@ -59,7 +134,7 @@
                     <a href="">Tag3</a>
                 </fieldset>
             </div>
-            <div class="best-members">
+            <div class="bestMembers">
                 <legend>Best members</legend>
                 <table class="table table-bordered">
                     <tbody>
@@ -73,5 +148,7 @@
             </div>
         </div>
     </div>
+    <script src="../Static/bootstrap/js/bootstrap.js"></script>
+    <script src="../Static/bootstrap/js/npm.js"></script>
 </body>
 </html>

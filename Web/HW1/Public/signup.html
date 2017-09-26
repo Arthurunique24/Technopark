@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+
+    <!--For mobile phones-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Bootstrap links-->
+    <link rel="stylesheet" href="../Static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../Static/bootstrap/css/bootstrap-theme.css">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../Static/css/style.css">
+    <link rel="stylesheet" href="../Static/fontAwesom/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" style="height: 52px">
+        <div class="header">
+            <a class="navbar-brand" href="#">AskMeArthur <i class="fa fa-search" aria-hidden="true"></i></a>
+        </div>
+        <div class="search">
+            <form class="form-search">
+                <input type="text" class="input-medium search-query" placeholder="Search">
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
+        <div class="userInfo">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="">Sign In</a> </li>
+                <li><a href="">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="left">
+        <div class="SignUp">
+            <form class="form-horizontal" action='' method="POST">
+                <fieldset>
+                    <div id="legend">
+                        <legend class="">Register</legend>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nickname-input" class="col-3 col-form-label">Username</label>
+                        <div class="col-9">
+                            <input class="form-control" type="text" placeholder="Dr.pepper" id="nickname-input">
+                        </div>
+                        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                    </div>
+                    <div class="form-group row has-danger">
+                        <label for="email-input" class="col-3 col-form-label">E-mail</label>
+                        <div class="col-9">
+                            <input class="form-control form-control-danger" type="email" placeholder="dr.pepper@mail.ru"
+                                   id="email-input">
+                        </div>
+                        <p class="help-block">Please provide your E-mail</p>
+                    </div>
+                    <div class="form-group row has-warning">
+                        <label for="password-input" class="col-3 col-form-label">Password</label>
+                        <div class="col-9">
+                            <input class="form-control form-control-warning" type="password" id="password-input">
+                        </div>
+                        <p class="help-block">Password should be at least 4 characters</p>
+                    </div>
+                    <div class="form-group row has-danger">
+                        <label for="repeat-password-input" class="col-3 col-form-label">Confirm password</label>
+                        <div class="col-9">
+                            <input class="form-control form-control-danger" type="password" id="repeat-password-input">
+                        </div>
+                        <p class="help-block">Please confirm password</p>
+                    </div>
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success">Register</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="right">
+        <div class="tags">
+            <fieldset>
+                <legend class="bot">Popular tags</legend>
+                <a href="">Tag1</a>
+                <a href="">Tag2</a>
+                <a href="">Tag3</a>
+            </fieldset>
+        </div>
+        <div class="bestMembers">
+            <legend>Best members</legend>
+            <table class="table table-bordered">
+                <tbody>
+                <tr><td><a href="">Mr.Freeman</a></td></tr>
+                <tr><td><a href="">Dr.House</a></td></tr>
+                <tr><td><a href="">Bender</a></td></tr>
+                <tr><td><a href="">Homer</a></td></tr>
+                <tr><td><a href="">Rick</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
