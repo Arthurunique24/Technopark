@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question</title>
+
+    <!--For mobile phones-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Bootstrap links-->
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.css">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/fontAwesom/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" style="height: 52px">
+        <div class="header">
+            <a class="navbar-brand" href="index.html">AskMeArthur <i class="fa fa-search" aria-hidden="true"></i></a>
+        </div>
+        <div class="search">
+            <form class="form-search">
+                <input type="text" class="input-medium search-query" placeholder="Search">
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
+        <div class="userInfo">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login.html">Sign In</a> </li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="left">
+        <div class="mainQuestion">
+            <div class="userAvatarInQuestion">
+                <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+            </div>
+            <div class="questionLike">
+                31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+            </div>
+            <div class="questionTitle">
+                <p>Question Title</p>
+            </div>
+            <div class="pageQuestionText">
+                <p>The meaning of life, or the answer to the question "What is the meaning of life?", pertains to the
+                    significance of living or existence in general. Many other related questions include
+                    "Why are we here?", "What is life all about?", or "What is the purpose of existence?"</p>
+            </div>
+            <div class="questionTags" style="margin-top: 4px; margin-left: 110px;">
+                Tags:
+                <a href="" style="color: red">Python</a>
+                <a href="" style="color: deepskyblue">C++</a>
+            </div>
+        </div>
+        <hr>
+        <div class="questions">
+            <div class="userAvatarInQuestion">
+                <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+            </div>
+            <div class="questionLike">
+                31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+            </div>
+            <div class="questionPreview">
+                <p>I can't answer that now, but give me some time to write a very long play in which nothing happens</p>
+            </div>
+            <div class="questionCorrect">
+                <label class="checkbox">
+                    <input type="checkbox"> Correct!
+                </label>
+            </div>
+        </div>
+        <div class="questions">
+            <div class="userAvatarInQuestion">
+                <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+            </div>
+            <div class="questionLike">
+                31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+            </div>
+            <div class="questionPreview">
+                <p>I can't answer that now, but give me some time to write a very long play in which nothing happens</p>
+            </div>
+            <div class="questionCorrect">
+                <label class="checkbox">
+                    <input type="checkbox"> Correct!
+                </label>
+            </div>
+        </div>
+        <hr>
+        <form class="form-answer">
+            <textarea class="form-control" rows="3" placeholder="Enter your answer here..." required></textarea>
+            <div class="control-group">
+                <div class="controls" style="margin-top: 10px">
+                    <button class="btn btn-success">Answer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="right">
+        <div class="tags">
+            <fieldset>
+                <legend class="bot">Popular tags</legend>
+                <a href="">Tag1</a>
+                <a href="">Tag2</a>
+                <a href="">Tag3</a>
+            </fieldset>
+        </div>
+        <div class="bestMembers">
+            <legend>Best members</legend>
+            <table class="table table-bordered">
+                <tbody>
+                <tr><td><a href="">Mr.Freeman</a></td></tr>
+                <tr><td><a href="">Dr.House</a></td></tr>
+                <tr><td><a href="">Bender</a></td></tr>
+                <tr><td><a href="">Homer</a></td></tr>
+                <tr><td><a href="">Rick</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

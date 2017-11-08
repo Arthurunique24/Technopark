@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+
+    <!--For mobile phones-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Bootstrap links-->
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.css">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/fontAwesom/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" style="height: 52px">
+            <div class="header">
+                    <a class="navbar-brand" href="#">AskMeArthur <i class="fa fa-search" aria-hidden="true"></i></a>
+            </div>
+            <div class="search">
+                <form class="form-search">
+                    <input type="text" class="input-medium search-query" placeholder="Serch">
+                    <button type="submit" class="btn">Search</button>
+                </form>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <img src="../static/img/user.svg" class="rounded-circle userAvatar">
+                <div class="userInfo">
+                    <div class="userName">Dr.Pepper</div>
+                    <div class="userOptions">
+                        <a href="">Options</a>
+                        <a href="">Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left">
+            <!--Some content-->
+        </div>
+        <div class="right">
+            <div class="tags">
+                <fieldset>
+                    <legend class="bot">Popular tags</legend>
+                    <a href="">Tag1</a>
+                    <a href="">Tag2</a>
+                    <a href="">Tag3</a>
+                </fieldset>
+            </div>
+            <div class="bestMembers">
+                <legend>Best members</legend>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr><td><a href="">Mr.Freeman</a></td></tr>
+                        <tr><td><a href="">Dr.House</a></td></tr>
+                        <tr><td><a href="">Bender</a></td></tr>
+                        <tr><td><a href="">Homer</a></td></tr>
+                        <tr><td><a href="">Rick</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
