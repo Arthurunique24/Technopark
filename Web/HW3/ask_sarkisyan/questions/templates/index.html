@@ -1,0 +1,86 @@
+{% extends "base.html"%}
+
+{% block title %} Top Questions {% endblock %}
+
+{% block content %}
+            <h3>New Questions</h3>
+            <a href="{% url 'hot'%}">How questions</a>
+            <div class="questions">
+                <div class="userAvatarInQuestion">
+                    <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+                </div>
+                <div class="questionLike">
+                    31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="{% url 'question'%}">Question Title</a>
+                </div>
+                <div class="questionPreview">
+                    <p>Hey, this is question preview! I know, that's cool!</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="{% url 'question'%}">Answers(3)</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <a href="" style="color: red">Python</a>
+                    <a href="" style="color: deepskyblue">C++</a>
+                </div>
+            </div>
+            <div class="questions">
+                <div class="userAvatarInQuestion">
+                    <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+                </div>
+                <div class="questionLike">
+                    31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="{% url 'question'%}">Question Title</a>
+                </div>
+                <div class="questionPreview">
+                    <p>Hey, this is question preview! I know, that's cool!</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="{% url 'question'%}">Answers(3)</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <a href="" style="color: red">Python</a>
+                    <a href="" style="color: deepskyblue">C++</a>
+                </div>
+            </div>
+            <div class="questions">
+                <div class="userAvatarInQuestion">
+                    <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+                </div>
+                <div class="questionLike">
+                    31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="{% url 'question'%}">Question Title</a>
+                </div>
+                <div class="questionPreview">
+                    <p>Hey, this is question preview! I know, that's cool!</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="{% url 'question'%}">Answers(3)</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <a href="" style="color: red">Python</a>
+                    <a href="" style="color: deepskyblue">C++</a>
+                </div>
+            </div>
+
+
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+{% endblock %}
