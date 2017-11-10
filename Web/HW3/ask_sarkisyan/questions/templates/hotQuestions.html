@@ -4,70 +4,31 @@
 
 {% block content %}
 <h3>Hot questions</h3>
-<div class="questions">
-    <div class="userAvatarInQuestion">
-        <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
-    </div>
-    <div class="questionLike">
-        31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-    </div>
-    <div class="questionTitle">
-        <a href="{% url 'question'%}">Question Title</a>
-    </div>
-    <div class="questionPreview">
-        <p>Hey, this is question preview! I know, that's cool!</p>
-    </div>
-    <div class="questionAnswers">
-        <a href="{% url 'question'%}">Answers(3)</a>
-    </div>
-    <div class="questionTags">
-        Tags:
-        <a href="" style="color: red">Python</a>
-        <a href="" style="color: deepskyblue">C++</a>
-    </div>
-</div>
-<div class="questions">
-    <div class="userAvatarInQuestion">
-        <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
-    </div>
-    <div class="questionLike">
-        31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-    </div>
-    <div class="questionTitle">
-        <a href="{% url 'question'%}">Question Title</a>
-    </div>
-    <div class="questionPreview">
-        <p>Hey, this is question preview! I know, that's cool!</p>
-    </div>
-    <div class="questionAnswers">
-        <a href="{% url 'question'%}">Answers(3)</a>
-    </div>
-    <div class="questionTags">
-        Tags:
-        <a href="" style="color: red">Python</a>
-        <a href="" style="color: deepskyblue">C++</a>
-    </div>
-</div>
-<div class="questions">
-    <div class="userAvatarInQuestion">
-        <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
-    </div>
-    <div class="questionLike">
-        31<a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-    </div>
-    <div class="questionTitle">
-        <a href="{% url 'question'%}">Question Title</a>
-    </div>
-    <div class="questionPreview">
-        <p>Hey, this is question preview! I know, that's cool!</p>
-    </div>
-    <div class="questionAnswers">
-        <a href="{% url 'question'%}">Answers(3)</a>
-    </div>
-    <div class="questionTags">
-        Tags:
-        <a href="" style="color: red">Python</a>
-        <a href="" style="color: deepskyblue">C++</a>
-    </div>
-</div>
+{% for question in questions %}
+            <div class="questions">
+                <div class="userAvatarInQuestion">
+                    <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+                </div>
+                <div class="questionLike">
+                    {{ question.count_answers }} <a href=""><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="{% url 'question'%}">{{ question.title }}</a>
+                </div>
+                <div class="questionPreview">
+                    <p style="margin-top: 5px;">{{ question.text }}</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="{% url 'question'%}">Answers ({{ question.count_answers }})</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <!--<a href="" style="color: red">Python</a>-->
+                    <!--<a href="" style="color: deepskyblue">C++</a>-->
+                    {% for tag in question.tags %}
+                        <a href="{% url 'questionsbytag' %}"> {{ tag }} </a>
+                    {% endfor %}
+                </div>
+            </div>
+{% endfor %}
 {% endblock %}

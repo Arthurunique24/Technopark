@@ -13,14 +13,13 @@
 
     <!--CSS-->
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/fontAwesom/css/font-awesome.min.css">
 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container" style="height: 52px">
             <div class="header">
-                    <a class="navbar-brand" href="{% url 'index' %}">AskMeArthur <i class="fa fa-search" aria-hidden="true"></i></a>
+                    <a class="navbar-brand" href="{% url 'index' %}">AskArthur</i></a>
             </div>
             <div class="search">
                 <form class="form-search">
@@ -36,7 +35,7 @@
                     <div class="userName">Dr.Pepper</div>
                     <div class="userOptions">
                         <a href="{% url 'settings'%}">Options</a>
-                        <a href="">Sign Out</a>
+                        <a href="{% url 'login'%}">Sign Out</a>
                     </div>
                 </div>
             </div>
@@ -58,15 +57,16 @@
             <div class="tags">
                 <fieldset>
                     <legend class="bot">Popular tags</legend>
-                    <a href="{% url 'questionsbytag'%}">Tag1</a>
-                    <a href="{% url 'questionsbytag'%}">Tag2</a>
-                    <a href="{% url 'questionsbytag'%}">Tag3</a>
+                    {% for tag in tags %}
+                        <a href="{% url 'questionsbytag' %}"> {{ tag }} </a>
+                    {% endfor %}
                 </fieldset>
             </div>
             <div class="bestMembers">
                 <legend>Best members</legend>
                 <table class="table table-bordered">
                     <tbody>
+                    <!--<tr><td><a href="">{{ question.bestMembers }}</a></td></tr>-->
                         <tr><td><a href="">Mr.Freeman</a></td></tr>
                         <tr><td><a href="">Dr.House</a></td></tr>
                         <tr><td><a href="">Bender</a></td></tr>
