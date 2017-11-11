@@ -4,17 +4,18 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def init():
     questions = []
-    for i in range(0, 100):
+    for i in range(0, 50):
         questions.append({
             'title': 'Title in question ' + str(i),
             'id': i,
             'text': 'Text in question ' + str(i),
-            'likes': 5,
+            'likes': 31,
+            # 'question_likes': [3, 5],
             'tags': ['Java', 'Android', 'SQL'],
-            'isVote': 0,
+            # 'isVote': 0,
             'count_answers': 31,
-            'answers': [{'text': 'answer1', 'isCorrect': 1, 'likes': 5},
-                        {'text': 'answer2', 'isCorrect': 0, 'likes': 5}],
+            'answers': [{'text': 'answer 1', 'isCorrect': 1, 'likes': 5},
+                        {'text': 'answer 2', 'isCorrect': 0, 'likes': 3}],
         })
     hotTags = ['Python', 'C++', 'Android']
     # bestMembers = ['Mr.Freeman', 'Dr.House', 'Bender', 'Homer', 'Rick']
@@ -42,40 +43,11 @@ def index(request):
                                              'tags': init_list['hotTags']})
 
 
-def ask(request):
-    init_list = init()
-    return render_to_response('ask.html', {'isAuthorized': init_list['Authorized'],
-                                           'questions': pagination(request),
-                                           'tags': init_list['hotTags']})
-
-
-def question(request):
+def question(request, id):
     init_list = init()
     return render_to_response('question.html', {'isAuthorized': init_list['Authorized'],
-                                                'question': init_list['questions'],
+                                                'questions': init_list['questions'][int(id)],
                                                 'tags': init_list['hotTags']})
-
-
-def login(request):
-    init_list = init()
-    return render_to_response('login.html', {'isAuthorized': init_list['Authorized'],
-                                             'questions': pagination(request),
-                                             'tags': init_list['hotTags']})
-
-
-
-def settings(request):
-    init_list = init()
-    return render_to_response('settings.html', {'isAuthorized': init_list['Authorized'],
-                                                'questions': pagination(request),
-                                                'tags': init_list['hotTags']})
-
-
-def signup(request):
-    init_list = init()
-    return render_to_response('signup.html', {'isAuthorized': init_list['Authorized'],
-                                              'questions': pagination(request),
-                                              'tags': init_list['hotTags']})
 
 
 def hot(request):
@@ -90,3 +62,31 @@ def questionsbytag(request):
     return render_to_response('questionsbytag.html', {'isAuthorized': init_list['Authorized'],
                                                       'questions': pagination(request),
                                                       'tags': init_list['hotTags']})
+
+
+def ask(request):
+    init_list = init()
+    return render_to_response('ask.html', {'isAuthorized': init_list['Authorized'],
+                                           'questions': pagination(request),
+                                           'tags': init_list['hotTags']})
+
+
+def login(request):
+    init_list = init()
+    return render_to_response('login.html', {'isAuthorized': 0,
+                                             'questions': pagination(request),
+                                             'tags': init_list['hotTags']})
+
+
+def signup(request):
+    init_list = init()
+    return render_to_response('signup.html', {'isAuthorized': 0,
+                                              'questions': pagination(request),
+                                              'tags': init_list['hotTags']})
+
+
+def settings(request):
+    init_list = init()
+    return render_to_response('settings.html', {'isAuthorized': init_list['Authorized'],
+                                                'questions': pagination(request),
+                                                'tags': init_list['hotTags']})
