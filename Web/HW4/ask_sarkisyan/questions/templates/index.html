@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+
+{% block title %} Top Questions {% endblock %}
+
+{% block content %}
+            <h3>New Questions</h3>
+            <!--<a href="">Hot questions</a>-->
+
+
+{% for question in questions %}
+            <div class="questions">
+                <div class="userAvatarInQuestion">
+                    <img src="{{ question.author.profile.avatar.url }}" class="rounded-circle question-avatar-img">
+                </div>
+                <div class="questionLike">
+                    {{ question.count_answers }} <a href=""><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                </div>
+                <div class="questionTitle">
+                    <a href="">{{ question.title }}</a>
+                </div>
+                <div class="questionPreview">
+                    <p style="margin-top: 5px;">{{ question.text }}</p>
+                </div>
+                <div class="questionAnswers">
+                    <a href="">Answers ({{ question.count_answers }})</a>
+                </div>
+                <div class="questionTags">
+                    Tags:
+                    <!--<a href="" style="color: red">Python</a>-->
+                    <!--<a href="" style="color: deepskyblue">C++</a>-->
+                    {% for tag in question.tags.all %}
+                        <a href=""> {{ tag }} </a>
+                    {% endfor %}
+                </div>
+            </div>
+{% endfor %}
+
+{% include "pagination.html" %}
+
+{% endblock %}

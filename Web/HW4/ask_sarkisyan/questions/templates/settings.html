@@ -1,0 +1,67 @@
+{% extends "base.html"%}
+
+{% block title %} Top Questions {% endblock %}
+
+{% block content %}
+        <div class="userSettings">
+            <div id="legend">
+                <legend class="">Settings: Dr.Pepper</legend>
+            </div>
+            <form class="settings-form">
+                <div class="form-group row has-success">
+                    <label for="login-input" class="col-3 col-form-label">Login</label>
+                    <div class="col-9">
+                        <input class="form-control form-control-success" type="text" placeholder="dr_pepper"
+                               id="login-input">
+                    </div>
+                </div>
+                <div class="form-group row has-danger">
+                    <label for="email-input" class="col-3 col-form-label">E-mail</label>
+                    <div class="col-9">
+                        <input class="form-control form-control-danger" type="email" placeholder="dr.pepper@mail.ru"
+                               id="email-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="nickname-input" class="col-3 col-form-label">Username</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" placeholder="Dr.pepper" id="nickname-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="prev-pass-input" class="col-3 col-form-label">Old password</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" id="prev-pass-input">
+                    </div>
+                </div>
+                <div class="form-group row has-warning">
+                    <label for="password-input" class="col-3 col-form-label">New password</label>
+                    <div class="col-9">
+                        <input class="form-control form-control-warning" type="password" id="password-input">
+                    </div>
+                </div>
+                <div class="form-group row has-danger">
+                    <label for="repeat-password-input" class="col-3 col-form-label">Confirm password</label>
+                    <div class="col-9">
+                        <input class="form-control form-control-danger" type="password" id="repeat-password-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="photo-input" class="col-3 col-form-label custom-file">Upload photo</label>
+                    <div class="col-9">
+                        <img src="/static/img/user.svg" class="photoImg">
+                        <label class="userPhotoFile">
+                            <input type="file" id="photo-input" name="f" class="custom-file-input">
+                            <span class="custom-file-control" id="name-file" value="Choose file"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-success">Apply changes!</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+{% endblock %}

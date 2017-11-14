@@ -1,0 +1,62 @@
+{% extends "base.html"%}
+
+{% block title %} Top Questions {% endblock %}
+
+{% block content %}
+        <div class="mainQuestion">
+            <div class="userAvatarInQuestion">
+                <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+            </div>
+            <div class="questionLike">
+                {{ questions.likes }} <a href=""><span class="glyphicon glyphicon-thumbs-up"></span></i></a>
+            </div>
+            <div class="questionTitle">
+                <p>{{ questions.title }}</p>
+            </div>
+            <div class="pageQuestionText">
+                <p>{{ questions.text }}</p>
+            </div>
+            <div class="questionTags" style="margin-top: 4px; margin-left: 110px;">
+                Tags:
+                {% for tag in questions.tags %}
+                    <a href="{% url 'questionsbytag' %}"> {{ tag }} </a>
+                {% endfor %}
+                <!--<a href="" style="color: red">Python</a>-->
+                <!--<a href="" style="color: deepskyblue">C++</a>-->
+            </div>
+        </div>
+        <hr>
+        {% for answer in questions.answers %}
+        <div class="questions">
+            <div class="userAvatarInQuestion">
+                <img src="/static/img/user.svg" class="rounded-circle question-avatar-img">
+            </div>
+            <div class="questionLike">
+                {{ answer.likes }} <a href=""><span class="glyphicon glyphicon-thumbs-up"></span></i></a>
+            </div>
+            <div class="questionPreview">
+                <p>{{ answer.text }}</p>
+            </div>
+            {% if answer.isCorrect %}
+                <div class="questionCorrect" style="color: green">
+                   <h4> <span class="glyphicon glyphicon-ok"></span> is correct</h4>
+                </div>
+            {% else %}
+                <div class="questionCorrect">
+                    <label class="checkbox">
+                        <input type="checkbox"> Correct!
+                    </label>
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <hr>
+        <form class="form-answer">
+            <textarea class="form-control" rows="3" placeholder="Enter your answer here..." required></textarea>
+            <div class="control-group">
+                <div class="controls" style="margin-top: 10px">
+                    <button class="btn btn-success">Answer</button>
+                </div>
+            </div>
+        </form>
+{% endblock %}
