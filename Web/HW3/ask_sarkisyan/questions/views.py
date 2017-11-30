@@ -23,9 +23,8 @@ def init():
     return {'questions': questions, 'hotTags': hotTags, 'Authorized': Authorized}
 
 
-def pagination(request):
-    init_list = init()
-    paginator = Paginator(init_list['questions'], 3)
+def pagination(request, lst, page_size=3):
+    paginator = Paginator(lst, page_size)
     page = request.GET.get('page')
     try:
         articles = paginator.page(page)
@@ -39,7 +38,7 @@ def pagination(request):
 def index(request):
     init_list = init()
     return render_to_response('index.html', {'isAuthorized': init_list['Authorized'],
-                                             'questions': pagination(request),
+                                             'questions': pagination(request, init_list['questions']),
                                              'tags': init_list['hotTags']})
 
 
@@ -52,14 +51,14 @@ def question(request, id):
 
 def hot(request):
     init_list = init()
-    return render_to_response('hotQuestions.html', {'isAuthorized': init_list['Authorized'],
+    return render_to_response('index.html', {'isAuthorized': init_list['Authorized'],
                                                     'questions': pagination(request),
                                                     'tags': init_list['hotTags']})
 
 
 def questionsbytag(request):
     init_list = init()
-    return render_to_response('questionsbytag.html', {'isAuthorized': init_list['Authorized'],
+    return render_to_response('index.html', {'isAuthorized': init_list['Authorized'],
                                                       'questions': pagination(request),
                                                       'tags': init_list['hotTags']})
 
