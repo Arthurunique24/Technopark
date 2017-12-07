@@ -6,6 +6,8 @@
 struct Point {
     int x;
     int y;
+
+    Point(): x(0), y(0) {}
 };
 
 bool Comp(const Point &firstTmp, const Point &secondTmp) {
@@ -13,7 +15,7 @@ bool Comp(const Point &firstTmp, const Point &secondTmp) {
 }
 
 template <class T>
-void *MySort(T *array, int left, int right, bool (*Compare)(const T&, const T&)) {
+void MySort(T *array, int left, int right, bool (*Compare)(const T&, const T&)) {
     T tmp;
     int index = 0;
 

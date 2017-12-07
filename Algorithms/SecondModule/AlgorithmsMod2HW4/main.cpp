@@ -40,12 +40,12 @@ size_t Partition(T *array, size_t left, size_t right, bool (*IsLess)(const T&, c
 }
 
 template <class T>
-T OrderStatistic(T *array, size_t n, size_t k) {
+T OrderStatistic(T *array, size_t n, size_t k, bool (*IsLess)(const T&, const T&)) {
     size_t left = 0;
     size_t right = n - 1;
 
     while (true) {
-        size_t partition = Partition(array, left, right, Compare);
+        size_t partition = Partition(array, left, right, IsLess);
 
         if (partition == k) {
             return array[partition];
@@ -67,7 +67,7 @@ int main() {
         std::cin >> array[i];
     }
 
-    std::cout << OrderStatistic(array, n, k);
+    std::cout << OrderStatistic(array, n, k, Compare);
 
     delete[] array;
     return 0;
