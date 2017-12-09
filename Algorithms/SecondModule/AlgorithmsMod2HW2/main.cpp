@@ -18,10 +18,11 @@ public:
 
         for (int i = 0; i < size; ++i) {
             heapArray.push_back(array[i]);
-
-            SiftUp(heapSize);
-
             ++heapSize;
+        }
+
+        for (int i = size/2 - 2; i > 0; --i) {
+            SiftDown(i);
         }
     }
 
@@ -114,7 +115,7 @@ int Greedy(T *array, int fruitCount, int capacity) {
 int main() {
     int fruitCount = 0;
     std::cin >> fruitCount;
-    int *array = new int[fruitCount];
+    auto *array = new int[fruitCount];
 
     for (int i = 0; i < fruitCount; ++i) {
         std::cin >> array[i];
