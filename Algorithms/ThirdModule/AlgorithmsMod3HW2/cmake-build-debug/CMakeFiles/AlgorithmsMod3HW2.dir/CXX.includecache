@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Arthur/ClionProjects/AlgorithmsMod3HW2/main.cpp
+iostream
+-
+queue
+/Users/Arthur/ClionProjects/AlgorithmsMod3HW2/queue
+stack
+/Users/Arthur/ClionProjects/AlgorithmsMod3HW2/stack
+

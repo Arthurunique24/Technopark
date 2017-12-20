@@ -1,0 +1,3 @@
+/Users/Arthur/ClionProjects/AlgorithmsMod3HW2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/Arthur/ClionProjects/AlgorithmsMod3HW2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Arthur/ClionProjects/AlgorithmsMod3HW2/cmake-build-debug/CMakeFiles/AlgorithmsMod3HW2.dir

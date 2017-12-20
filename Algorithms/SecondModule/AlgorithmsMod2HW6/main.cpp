@@ -1,60 +1,50 @@
 #include <iostream>
-#include <vector>
 
-void CountingSort(std::vector<unsigned long long int> &array, unsigned long long int index) {
-    std::vector<unsigned long long int> temporaryBuffer(array.size());
-    std::vector<unsigned long long int> counting(10, 0);
+int Digit( long long value, int byte ) {
+    return (value >> (8 * byte)) & 255;
+}
 
-    for (int i = 0; i < array.size(); i++) {
-        counting[(array[i] / index) % 10]++;
-    }
-    for (int i = 1; i < 10; i++) {
-        counting[i] += counting[i - 1];
-    }
-    for (int i = static_cast<int>(array.size() - 1); i >= 0; i--) {
-        temporaryBuffer[--counting[(array[i] / index) % 10]] = array[i];
-    }
-    for (int i = 0; i < array.size(); i++) {
-        array[i] = temporaryBuffer[i];
-    }
-};
+void LSDLongLong(long long *arr, int countOfNumbers) {
+    for( int i = 0; i < sizeof(long long); ++i ) {
+        long long* buffer = new long long [countOfNumbers];
+        int c[256] = {0};
 
-void LSDSort(std::vector<unsigned long long int> &array, unsigned long long int biggest) {
-    for (unsigned long long int i = 1; biggest / i > 0; i *= 10) {
-        CountingSort(array, i);
+        for (int j = 0; j < countOfNumbers; ++j) {
+            c[Digit(arr[j], i)]++;
+        }
+        for (int j = 1; j < 256; ++j) {
+            c[j] += c[j - 1];
+        }
+        for (int j = countOfNumbers - 1; j >= 0; --j) {
+            buffer[--c[Digit(arr[j], i)]] = arr[j];
+        }
+        std::memcpy(arr, buffer, sizeof(long long) * countOfNumbers);
+
+        delete[] buffer;
     }
 }
 
-unsigned long long int Biggest(std::vector<unsigned long long int> &array) {
-    unsigned long long int biggest = array[0];
-
-    for (int i = 1; i < array.size(); i++) {
-        if (array[i] > biggest) {
-            biggest = array[i];
-        }
-    }
-
-    return biggest;
-};
-
 int main() {
-    size_t n;
-    std::cin >> n;
+    int countOfNumbers = 0;
+    std::cin >> countOfNumbers;
 
-    std::vector<unsigned long long int> array;
-
-    for (size_t i = 1; i <= n; ++i) {
-        unsigned long long int data = 0;
-        std::cin >> data;
-
-        array.push_back(data);
+    if (countOfNumbers <= 0) {
+        return 0;
     }
 
-    unsigned long long int biggest = Biggest(array);
-    LSDSort(array, biggest);
+    long long* arr = new long long [countOfNumbers];
 
-    for (int i = 0; i < array.size(); i++) {
-        std::cout << array[i] << " ";
+    for(int i = 0; i < countOfNumbers; i++) {
+        std::cin >> arr[i];
     }
+
+    LSDLongLong(arr, countOfNumbers);
+
+    for(int i = 0; i < countOfNumbers; i++) {
+        std::cout << arr[i] << " ";
+    }
+
+    delete[] arr;
+
     return 0;
 }

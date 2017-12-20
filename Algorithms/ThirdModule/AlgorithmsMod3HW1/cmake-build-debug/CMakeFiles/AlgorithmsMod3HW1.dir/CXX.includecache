@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/Arthur/ClionProjects/AlgorithmsMod2HW6/main.cpp
+/Users/Arthur/ClionProjects/AlgorithmsMod3HW1/main.cpp
 iostream
+-
+vector
 -
 
