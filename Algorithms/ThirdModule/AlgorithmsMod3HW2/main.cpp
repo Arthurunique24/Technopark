@@ -11,10 +11,6 @@ struct Node {
             :data(value), left(nullptr), right(nullptr) {
 
     }
-    ~Node() {
-        delete left;
-        delete right;
-    }
 };
 
 class BinaryTree {
@@ -22,12 +18,12 @@ public :
     BinaryTree();
     ~BinaryTree();
 
-    void Insert(const int &data);
+    void Insert(const int &);
     void PrintPreOrder();
 
 private :
     Node* root;
-    void PrintPreOrderHelper(Node *node);
+    void PrintPreOrderHelper(Node *);
 };
 
 BinaryTree::BinaryTree(): root(nullptr) {
@@ -35,7 +31,32 @@ BinaryTree::BinaryTree(): root(nullptr) {
 }
 
 BinaryTree::~BinaryTree() {
-    delete root;
+    if (root == nullptr) {
+        return;
+    }
+
+    if(root->left == nullptr && root->right == nullptr) {
+        delete root;
+    } else if(root->left == nullptr) {
+        Node* tmp = root->right;
+        root = tmp;
+        tmp->left = nullptr;
+        tmp->right = nullptr;
+        delete tmp;
+    } else {
+        Node *tmpR = root->right;
+        Node *tmpL = root->left;
+
+        while (tmpR->right) {
+            tmpL = tmpR;
+            tmpR = tmpR->right;
+        }
+        tmpL->right = tmpR->left;
+        tmpR->left = nullptr;
+        root->data = tmpR->data;
+
+        delete tmpL;
+    }
 }
 
 void BinaryTree::Insert(const int &data) {
@@ -45,6 +66,7 @@ void BinaryTree::Insert(const int &data) {
         return;
     }
     Node* nextNode = root;
+
     while (true) {
         if (nextNode->data > data) {
             if (nextNode->left != nullptr) {
